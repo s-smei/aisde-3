@@ -40,7 +40,7 @@
 
 //===============================================================================
 // Flagi sterujące kompresją z użyciem drzewa Huffmana
-#define ROZMIAR_BAJTU   8               // w bitach
+#define ROZMIAR_BAJTU   8             // w bitach
 #define NAZWA_PLIKU     "hamlet.txt"
 
 

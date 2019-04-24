@@ -94,6 +94,7 @@ int main(){
 	huffman->createTree();
 
 	huffman->wypiszNaKonsole();
+    HuffmanData::printSizeDiff();
 	delete(huffman);
 
 #elif BADANIE_BST

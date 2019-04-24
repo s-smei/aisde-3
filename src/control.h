@@ -29,7 +29,7 @@
 // Nie ma potrzeby modyfikowania implementacji algorytmów (pod warunkiem poprawnego zdefiniowania własnych rekordów).
 
 //===============================================================================
-#define NUMER_INDEKSU  302494  // tu wstawić numer indeksu
+#define NUMER_INDEKSU  0  // tu wstawić numer indeksu
 // można też  "losowo" wybierać liczbę startową dla każdego uruchomienia aplikacji
 //#define NUMER_INDEKSU  clock()
 

@@ -20,7 +20,8 @@
 using namespace std;
 
 #include "huffman.h"
-
+long HuffmanData::inSize = 0L;
+long HuffmanData::outSize = 0L;
 
 
 //--------------------------------------------------------
@@ -123,4 +124,6 @@ void Huffman::createDataTable(unsigned char* source,long sizeSource){
 //--------------------------------------------------------
 
 
-void Huffman::wypiszNaKonsole(bool){ this->array[this->lastIndex()].display(""); }
+void Huffman::wypiszNaKonsole(bool){
+    this->array[this->lastIndex()].display("");
+}

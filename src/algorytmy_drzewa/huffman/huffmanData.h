@@ -51,6 +51,7 @@ public:
     void setBit(int value, int index){ value ? setOneToBit(index):setZeroToBit(index); }
 
     void print(){ for(int i = byteSize-1; i >= 0; i--) cout << ((value&(0x01<<i))>>i); }
+    unsigned int getValue() const { return value; }
 };
 #ifdef _MAIN_CPP_
 const int HuffmanByte::stdByteSize = 8;
@@ -73,6 +74,9 @@ public:
     HuffmanData(const HuffmanData& sec) : Vertex(sec.left, sec.right), count(sec.count), byte(sec.byte) {}
     ~HuffmanData(){}
 
+    static long inSize;
+    static long outSize;
+
     void clear(){ left = right = nullptr; count = 0L; byte.setZero(); }
     void clearTree(){ delete left; left = nullptr; delete right; right = nullptr; }
 
@@ -92,9 +96,28 @@ public:
     HuffmanData& operator ++ (int) { count += 1; return *this; }
 	HuffmanData& operator -- (int) { count -= 1; return *this; }
 
+    char byteToChar(unsigned int byte) {
+        return static_cast<char>(byte);
+    }
+
+    static void printSizeDiff() {
+        cout << "inSize: " << HuffmanData::inSize;
+        cout << "  outSize: " << HuffmanData:: outSize;
+        cout << endl;
+        cout << static_cast<double>(HuffmanData::outSize) / HuffmanData::inSize << endl;
+    }
+
     void display(string poprzedni, int=0){
         if(left == nullptr){
-            if(right == nullptr){ cout << "byte: "; print(); cout << "  licznosc: " << setw(6) << count << "  kod: "+ poprzedni << endl; }
+            if(right == nullptr){
+                #if ROZMIAR_BAJTU==8
+                cout << "letter: " << byteToChar(byte.getValue()) << "  ";
+                #endif
+                cout << "byte: "; print(); HuffmanData::inSize += ROZMIAR_BAJTU * count;
+                cout << "  licznosc: " << setw(6) << count;
+                cout << "  kod: "+ poprzedni << std::endl;
+                HuffmanData::outSize += poprzedni.length() * count;
+            }
             else right->display(poprzedni+"1");
         }
         else{
@@ -125,5 +148,6 @@ public:
         prev.clear();
     }
 };
+
 
 #endif
